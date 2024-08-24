@@ -1,0 +1,17 @@
+name: sched_effective_mask
+ID: 1701
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int pid;	offset:8;	size:4;	signed:1;
+	field:int target_cpu;	offset:12;	size:4;	signed:1;
+	field:bool prefer;	offset:16;	size:1;	signed:0;
+	field:long effective_softmask;	offset:24;	size:8;	signed:1;
+	field:long tsk_softmask;	offset:32;	size:8;	signed:1;
+	field:long tg_softmask;	offset:40;	size:8;	signed:1;
+	field:int cpuctl;	offset:48;	size:4;	signed:1;
+
+print fmt: "pid=%4d target=%d latency_sensitive=%d eff_softmask=0x%lx tsk_softmask=0x%lx tg_softmask=0x%lx, cpuctl=%d", REC->pid, REC->target_cpu, REC->prefer, REC->effective_softmask, REC->tsk_softmask, REC->tg_softmask, REC->cpuctl

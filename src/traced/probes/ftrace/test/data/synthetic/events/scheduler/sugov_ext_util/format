@@ -1,0 +1,14 @@
+name: sugov_ext_util
+ID: 1624
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:unsigned long util;	offset:16;	size:8;	signed:0;
+	field:unsigned int min;	offset:24;	size:4;	signed:0;
+	field:unsigned int max;	offset:28;	size:4;	signed:0;
+
+print fmt: "cpu=%d util=%lu min=%u max=%u", REC->cpu, REC->util, REC->min, REC->max

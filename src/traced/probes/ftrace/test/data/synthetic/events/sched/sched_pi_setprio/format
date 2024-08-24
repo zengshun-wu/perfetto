@@ -1,5 +1,5 @@
 name: sched_pi_setprio
-ID: 77
+ID: 110
 format:
 	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
 	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;

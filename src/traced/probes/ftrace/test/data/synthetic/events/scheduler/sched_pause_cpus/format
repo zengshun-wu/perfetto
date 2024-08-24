@@ -1,0 +1,18 @@
+name: sched_pause_cpus
+ID: 1664
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int req_cpus;	offset:8;	size:4;	signed:0;
+	field:unsigned int last_cpus;	offset:12;	size:4;	signed:0;
+	field:unsigned int time;	offset:16;	size:4;	signed:0;
+	field:unsigned char pause;	offset:20;	size:1;	signed:0;
+	field:int err;	offset:24;	size:4;	signed:1;
+	field:unsigned int pause_cpus;	offset:28;	size:4;	signed:0;
+	field:unsigned int online_cpus;	offset:32;	size:4;	signed:0;
+	field:unsigned int active_cpus;	offset:36;	size:4;	signed:0;
+
+print fmt: "req=0x%x cpus=0x%x time=%u us paused=%d, err=%d, pause=0x%x, online=0x%x, active=0x%x", REC->req_cpus, REC->last_cpus, REC->time, REC->pause, REC->err, REC->pause_cpus, REC->online_cpus, REC->active_cpus

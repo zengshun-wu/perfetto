@@ -1,0 +1,16 @@
+name: sugov_ext_gear_uclamp
+ID: 1623
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:unsigned int util_ori;	offset:12;	size:4;	signed:0;
+	field:unsigned int umin;	offset:16;	size:4;	signed:0;
+	field:unsigned int umax;	offset:20;	size:4;	signed:0;
+	field:unsigned int util;	offset:24;	size:4;	signed:0;
+	field:unsigned int umax_gear;	offset:28;	size:4;	signed:0;
+
+print fmt: "cpu=%d util_ori=%d umin=%d umax=%d util_ret=%d, umax_gear=%d", REC->cpu, REC->util_ori, REC->umin, REC->umax, REC->util, REC->umax_gear

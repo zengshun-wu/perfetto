@@ -1,0 +1,21 @@
+name: sugov_ext_tar_cal
+ID: 1683
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:int pcpu_tar_u;	offset:12;	size:4;	signed:1;
+	field:int gt0;	offset:16;	size:4;	signed:1;
+	field:int gt1;	offset:20;	size:4;	signed:1;
+	field:int gt2;	offset:24;	size:4;	signed:1;
+	field:int gt3;	offset:28;	size:4;	signed:1;
+	field:int nr0;	offset:32;	size:4;	signed:1;
+	field:int nr1;	offset:36;	size:4;	signed:1;
+	field:int nr2;	offset:40;	size:4;	signed:1;
+	field:int nr3;	offset:44;	size:4;	signed:1;
+	field:int ot;	offset:48;	size:4;	signed:1;
+
+print fmt: "cpu=%d tar=%d gt[0]=%d gt[1]=%d gt[2]=%d gt[3]=%d nr[0]=%d nr[1]=%d nr[2]=%d nr[3]=%d ot=%d", REC->cpu, REC->pcpu_tar_u, REC->gt0, REC->gt1, REC->gt2, REC->gt3, REC->nr0, REC->nr1, REC->nr2, REC->nr3, REC->ot

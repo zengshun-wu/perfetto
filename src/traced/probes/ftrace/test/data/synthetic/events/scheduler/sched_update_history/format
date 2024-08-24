@@ -1,0 +1,36 @@
+name: sched_update_history
+ID: 1673
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:char comm[16];	offset:8;	size:16;	signed:0;
+	field:pid_t pid;	offset:24;	size:4;	signed:1;
+	field:unsigned long util_avg;	offset:32;	size:8;	signed:0;
+	field:unsigned int ewma;	offset:40;	size:4;	signed:0;
+	field:unsigned int enqueued;	offset:44;	size:4;	signed:0;
+	field:unsigned int demand;	offset:48;	size:4;	signed:0;
+	field:u32 util_demand;	offset:52;	size:4;	signed:0;
+	field:unsigned int runtime;	offset:56;	size:4;	signed:0;
+	field:int samples;	offset:60;	size:4;	signed:1;
+	field:enum task_event evt;	offset:64;	size:4;	signed:0;
+	field:enum history_event hisevt;	offset:68;	size:4;	signed:0;
+	field:u32 hist0;	offset:72;	size:4;	signed:0;
+	field:u32 hist1;	offset:76;	size:4;	signed:0;
+	field:u32 hist2;	offset:80;	size:4;	signed:0;
+	field:u32 hist3;	offset:84;	size:4;	signed:0;
+	field:u32 hist4;	offset:88;	size:4;	signed:0;
+	field:u32 util_sum_hist0;	offset:92;	size:4;	signed:0;
+	field:u32 util_sum_hist1;	offset:96;	size:4;	signed:0;
+	field:u32 util_sum_hist2;	offset:100;	size:4;	signed:0;
+	field:u32 util_sum_hist3;	offset:104;	size:4;	signed:0;
+	field:u32 util_sum_hist4;	offset:108;	size:4;	signed:0;
+	field:u32 util_avg_history0;	offset:112;	size:4;	signed:0;
+	field:u32 util_avg_history1;	offset:116;	size:4;	signed:0;
+	field:u32 util_avg_history2;	offset:120;	size:4;	signed:0;
+	field:u32 util_avg_history3;	offset:124;	size:4;	signed:0;
+	field:u32 util_avg_history4;	offset:128;	size:4;	signed:0;
+
+print fmt: "pid=%d name=%s: runtime=%u samples=%d event=%s hisevt=%s demand=%u util_demand=%u (hist[0]=%u hist[1]=%u hist[2]=%u hist[3]=%u hist[4]=%u) (util_sum_hist[0]=%u util_sum_hist[1]=%u util_sum_hist[2]=%u util_sum_hist[3]=%u util_sum_hist[4]=%u) (util_avg_history[0]=%u util_avg_history[1]=%u util_avg_history[2]=%u util_avg_history[3]=%u util_avg_history[4]=%u) pelt(util=%lu util_enqueued=%u util_ewma=%u)", REC->pid, REC->comm, REC->runtime, REC->samples, task_event_names[REC->evt], history_event_names[REC->hisevt], REC->demand, REC->util_demand, REC->hist0, REC->hist1, REC->hist2, REC->hist3, REC->hist4, REC->util_sum_hist0, REC->util_sum_hist1, REC->util_sum_hist2, REC->util_sum_hist3, REC->util_sum_hist4, REC->util_avg_history0, REC->util_avg_history1, REC->util_avg_history2, REC->util_avg_history3, REC->util_avg_history4, REC->util_avg, REC->enqueued, REC->ewma

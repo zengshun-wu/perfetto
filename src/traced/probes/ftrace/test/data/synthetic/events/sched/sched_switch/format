@@ -1,5 +1,5 @@
 name: sched_switch
-ID: 47
+ID: 96
 format:
 	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
 	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
@@ -13,5 +13,12 @@ format:
 	field:char next_comm[16];	offset:40;	size:16;	signed:0;
 	field:pid_t next_pid;	offset:56;	size:4;	signed:1;
 	field:int next_prio;	offset:60;	size:4;	signed:1;
+	field:u32 prev_cpumask;	offset:64;	size:4;	signed:0;
+	field:u32 next_cpumask;	offset:68;	size:4;	signed:0;
+	field:u32 type;	offset:72;	size:4;	signed:0;
+	field:u64 prev_dynamic_svp;	offset:80;	size:8;	signed:0;
+	field:u64 next_dynamic_svp;	offset:88;	size:8;	signed:0;
+	field:u32 prev_dyn;	offset:96;	size:4;	signed:0;
+	field:u32 next_dyn;	offset:100;	size:4;	signed:0;
 
-print fmt: "prev_comm=%s prev_pid=%d prev_prio=%d prev_state=%s%s ==> next_comm=%s next_pid=%d next_prio=%d", REC->prev_comm, REC->prev_pid, REC->prev_prio, REC->prev_state & (2048-1) ? __print_flags(REC->prev_state & (2048-1), "|", { 1, "S"} , { 2, "D" }, { 4, "T" }, { 8, "t" }, { 16, "Z" }, { 32, "X" }, { 64, "x" }, { 128, "K" }, { 256, "W" }, { 512, "P" }, { 1024, "N" }) : "R", REC->prev_state & 2048 ? "+" : "", REC->next_comm, REC->next_pid, REC->next_prio
+print fmt: "prev_comm=%s prev_pid=%d prev_prio=%03u%03u%09d prev_state=%s%s ==> next_comm=%s next_pid=%d next_prio=%03u%03u%09d", REC->prev_comm, REC->prev_pid, REC->prev_dyn, REC->prev_cpumask, REC->prev_prio, (REC->prev_state & ((((0x00000000 | 0x00000001 | 0x00000002 | 0x00000004 | 0x00000008 | 0x00000010 | 0x00000020 | 0x00000040) + 1) << 1) - 1)) ? __print_flags(REC->prev_state & ((((0x00000000 | 0x00000001 | 0x00000002 | 0x00000004 | 0x00000008 | 0x00000010 | 0x00000020 | 0x00000040) + 1) << 1) - 1), "|", { 0x00000001, "S" }, { 0x00000002, "D" }, { 0x00000004, "T" }, { 0x00000008, "t" }, { 0x00000010, "X" }, { 0x00000020, "Z" }, { 0x00000040, "P" }, { 0x00000080, "I" }) : "R", REC->prev_state & (((0x00000000 | 0x00000001 | 0x00000002 | 0x00000004 | 0x00000008 | 0x00000010 | 0x00000020 | 0x00000040) + 1) << 1) ? "+" : "", REC->next_comm, REC->next_pid, REC->next_dyn, REC->next_cpumask, REC->next_prio

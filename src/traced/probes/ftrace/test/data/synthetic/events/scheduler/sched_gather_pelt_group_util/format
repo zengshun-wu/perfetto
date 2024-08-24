@@ -1,0 +1,15 @@
+name: sched_gather_pelt_group_util
+ID: 1671
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:char comm[16];	offset:8;	size:16;	signed:0;
+	field:pid_t pid;	offset:24;	size:4;	signed:1;
+	field:unsigned long tsk_util;	offset:32;	size:8;	signed:0;
+	field:int grp_id;	offset:40;	size:4;	signed:1;
+	field:int cpu;	offset:44;	size:4;	signed:1;
+
+print fmt: "comm=%s pid=%d util=%lu grp_id=%d cpu=%d", REC->comm, REC->pid, REC->tsk_util, REC->grp_id, REC->cpu

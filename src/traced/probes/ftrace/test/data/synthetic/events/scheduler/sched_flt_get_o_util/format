@@ -1,0 +1,17 @@
+name: sched_flt_get_o_util
+ID: 1689
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:int cpu_r;	offset:12;	size:4;	signed:1;
+	field:int grp_idx;	offset:16;	size:4;	signed:1;
+	field:u32 util_ratio;	offset:20;	size:4;	signed:0;
+	field:int flt_util;	offset:24;	size:4;	signed:1;
+	field:u32 grp_r;	offset:28;	size:4;	signed:0;
+	field:u32 total;	offset:32;	size:4;	signed:0;
+
+print fmt: "cpu=%d util=%d grp=%d ratio=%u gputil=%d gp_r=%u total=%u", REC->cpu, REC->cpu_r, REC->grp_idx, REC->util_ratio, REC->flt_util, REC->grp_r, REC->total

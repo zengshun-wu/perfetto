@@ -1,0 +1,14 @@
+name: sched_qos_cpu_util
+ID: 1714
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int cpu;	offset:8;	size:4;	signed:0;
+	field:unsigned int qos;	offset:12;	size:4;	signed:0;
+	field:unsigned int util;	offset:16;	size:4;	signed:0;
+	field:unsigned int qos_util;	offset:20;	size:4;	signed:0;
+
+print fmt: "cpu=%d qos=%d qos_util:%d", REC->cpu, REC->qos, REC->qos_util

@@ -1,0 +1,16 @@
+name: sched_get_pelt_group_util
+ID: 1670
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:unsigned long long delta;	offset:16;	size:8;	signed:0;
+	field:unsigned long gp0_util;	offset:24;	size:8;	signed:0;
+	field:unsigned long gp1_util;	offset:32;	size:8;	signed:0;
+	field:unsigned long gp2_util;	offset:40;	size:8;	signed:0;
+	field:unsigned long gp3_util;	offset:48;	size:8;	signed:0;
+
+print fmt: "cpu=%d= delta=%llu= gp_util[0]=%lu gp_util[1]=%lu gp_util[2] =%lu gp_util[3]=%lu", REC->cpu, REC->delta, REC->gp0_util, REC->gp1_util, REC->gp2_util, REC->gp3_util

@@ -1,0 +1,16 @@
+name: sched_find_energy_efficient_cpu
+ID: 1710
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:bool in_irq;	offset:8;	size:1;	signed:0;
+	field:unsigned long best_delta;	offset:16;	size:8;	signed:0;
+	field:int best_energy_cpu;	offset:24;	size:4;	signed:1;
+	field:int best_idle_cpu;	offset:28;	size:4;	signed:1;
+	field:int idle_max_spare_cap_cpu;	offset:32;	size:4;	signed:1;
+	field:int sys_max_spare_cap_cpu;	offset:36;	size:4;	signed:1;
+
+print fmt: "in_irq=%d best_delta=%lu best_energy_cpu=%d best_idle_cpu=%d idle_max_spare_cap_cpu=%d sys_max_spare_cpu=%d", REC->in_irq, REC->best_delta, REC->best_energy_cpu, REC->best_idle_cpu, REC->idle_max_spare_cap_cpu, REC->sys_max_spare_cap_cpu

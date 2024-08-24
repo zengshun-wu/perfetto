@@ -1,0 +1,34 @@
+name: sched_select_task_rq_rt
+ID: 1654
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:int policy;	offset:12;	size:4;	signed:1;
+	field:int target_cpu;	offset:16;	size:4;	signed:1;
+	field:long lowest_mask;	offset:24;	size:8;	signed:1;
+	field:int rt_aggre_preempt_enable;	offset:32;	size:4;	signed:1;
+	field:unsigned int idle_cpus;	offset:36;	size:4;	signed:0;
+	field:unsigned int cfs_cpus;	offset:40;	size:4;	signed:0;
+	field:unsigned int rt_cpus;	offset:44;	size:4;	signed:0;
+	field:int cfs_lowest_cpu;	offset:48;	size:4;	signed:1;
+	field:int cfs_lowest_prio;	offset:52;	size:4;	signed:1;
+	field:int cfs_lowest_pid;	offset:56;	size:4;	signed:1;
+	field:int rt_lowest_cpu;	offset:60;	size:4;	signed:1;
+	field:int rt_lowest_prio;	offset:64;	size:4;	signed:1;
+	field:int rt_lowest_pid;	offset:68;	size:4;	signed:1;
+	field:unsigned long task_util_est;	offset:72;	size:8;	signed:0;
+	field:unsigned long uclamp_min;	offset:80;	size:8;	signed:0;
+	field:unsigned long uclamp_max;	offset:88;	size:8;	signed:0;
+	field:unsigned long uclamp_task_util;	offset:96;	size:8;	signed:0;
+	field:int sd_flag;	offset:104;	size:4;	signed:1;
+	field:bool sync;	offset:108;	size:1;	signed:0;
+	field:long task_mask;	offset:112;	size:8;	signed:1;
+	field:int cpuctl_grp_id;	offset:120;	size:4;	signed:1;
+	field:int cpuset_grp_id;	offset:124;	size:4;	signed:1;
+	field:long act_mask;	offset:128;	size:8;	signed:1;
+
+print fmt: "pid=%4d policy=0x%08x target=%d lowest_mask=0x%lx rt_preempt_ctrl=%d idle_cpus=0x%x cfs_cpus=0x%x rt_cpus=0x%x cfs_lowest_cpu=%d cfs_lowest_prio=%d cfs_lowest_pid=%d rt_lowest_cpu=%d rt_lowest_prio=%d rt_lowest_pid=%d util_est=%lu uclamp_min=%lu uclamp_max=%lu uclamp=%lu sd_flag=%d sync=%d mask=0x%lx cpuctl=%d cpuset=%d act_mask=0x%lx", REC->pid, REC->policy, REC->target_cpu, REC->lowest_mask, REC->rt_aggre_preempt_enable, REC->idle_cpus, REC->cfs_cpus, REC->rt_cpus, REC->cfs_lowest_cpu, REC->cfs_lowest_prio, REC->cfs_lowest_pid, REC->rt_lowest_cpu, REC->rt_lowest_prio, REC->rt_lowest_pid, REC->task_util_est, REC->uclamp_min, REC->uclamp_max, REC->uclamp_task_util, REC->sd_flag, REC->sync, REC->task_mask, REC->cpuctl_grp_id, REC->cpuset_grp_id, REC->act_mask

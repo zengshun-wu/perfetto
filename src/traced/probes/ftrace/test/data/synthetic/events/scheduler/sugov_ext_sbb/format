@@ -1,0 +1,17 @@
+name: sugov_ext_sbb
+ID: 1628
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:int pid;	offset:12;	size:4;	signed:1;
+	field:unsigned int boost;	offset:16;	size:4;	signed:0;
+	field:unsigned int util;	offset:20;	size:4;	signed:0;
+	field:unsigned int util_boost;	offset:24;	size:4;	signed:0;
+	field:unsigned int active_ratio;	offset:28;	size:4;	signed:0;
+	field:unsigned int threshold;	offset:32;	size:4;	signed:0;
+
+print fmt: "cpu=%d pid=%d boost=%d util=%d util_boost=%d active_ratio=%d, threshold=%d", REC->cpu, REC->pid, REC->boost, REC->util, REC->util_boost, REC->active_ratio, REC->threshold

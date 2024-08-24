@@ -1,0 +1,21 @@
+name: sched_get_gear_indices
+ID: 1696
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:int uclamp_task_util;	offset:12;	size:4;	signed:1;
+	field:int gear_hints_enable;	offset:16;	size:4;	signed:1;
+	field:int gear_start;	offset:20;	size:4;	signed:1;
+	field:int num_gear;	offset:24;	size:4;	signed:1;
+	field:int gear_reverse;	offset:28;	size:4;	signed:1;
+	field:int num_sched_clusters;	offset:32;	size:4;	signed:1;
+	field:int max_gear_num;	offset:36;	size:4;	signed:1;
+	field:int order_index;	offset:40;	size:4;	signed:1;
+	field:int end_index;	offset:44;	size:4;	signed:1;
+	field:int reverse;	offset:48;	size:4;	signed:1;
+
+print fmt: "pid=%d uclamp_task_util=%d gear_hints_enable=%d gear_start=%d num_gear=%d gear_reverse=%d num_sched_clusters=%d max_gear_num=%d order_index=%d end_index=%d reverse=%d", REC->pid, REC->uclamp_task_util, REC->gear_hints_enable, REC->gear_start, REC->num_gear, REC->gear_reverse, REC->num_sched_clusters, REC->max_gear_num, REC->order_index, REC->end_index, REC->reverse

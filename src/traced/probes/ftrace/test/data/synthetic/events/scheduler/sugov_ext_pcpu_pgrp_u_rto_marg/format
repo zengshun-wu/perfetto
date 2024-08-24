@@ -1,0 +1,37 @@
+name: sugov_ext_pcpu_pgrp_u_rto_marg
+ID: 1684
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:int gu0;	offset:12;	size:4;	signed:1;
+	field:int gu1;	offset:16;	size:4;	signed:1;
+	field:int gu2;	offset:20;	size:4;	signed:1;
+	field:int gu3;	offset:24;	size:4;	signed:1;
+	field:int rto0;	offset:28;	size:4;	signed:1;
+	field:int rto1;	offset:32;	size:4;	signed:1;
+	field:int rto2;	offset:36;	size:4;	signed:1;
+	field:int rto3;	offset:40;	size:4;	signed:1;
+	field:int marg0;	offset:44;	size:4;	signed:1;
+	field:int marg1;	offset:48;	size:4;	signed:1;
+	field:int marg2;	offset:52;	size:4;	signed:1;
+	field:int marg3;	offset:56;	size:4;	signed:1;
+	field:int ot;	offset:60;	size:4;	signed:1;
+	field:int pcpu_pgrp_wetin0;	offset:64;	size:4;	signed:1;
+	field:int pcpu_pgrp_wetin1;	offset:68;	size:4;	signed:1;
+	field:int pcpu_pgrp_wetin2;	offset:72;	size:4;	signed:1;
+	field:int pcpu_pgrp_wetin3;	offset:76;	size:4;	signed:1;
+	field:int pcpu_pgrp_tar_u0;	offset:80;	size:4;	signed:1;
+	field:int pcpu_pgrp_tar_u1;	offset:84;	size:4;	signed:1;
+	field:int pcpu_pgrp_tar_u2;	offset:88;	size:4;	signed:1;
+	field:int pcpu_pgrp_tar_u3;	offset:92;	size:4;	signed:1;
+	field:int cpu_tar_util;	offset:96;	size:4;	signed:1;
+	field:int grp_margin0;	offset:100;	size:4;	signed:1;
+	field:int grp_margin1;	offset:104;	size:4;	signed:1;
+	field:int grp_margin2;	offset:108;	size:4;	signed:1;
+	field:int grp_margin3;	offset:112;	size:4;	signed:1;
+
+print fmt: "cpu=%d gu[0]=%d gu[1]=%d gu[2]=%d gu[3]=%d rto[0]=%d rto[1]=%d rto[2]=%d rto[3]=%d marg[0]=%d marg[1]=%d marg[2]=%d marg[3]=%d ot=%d wt[0]=%d wt[1]=%d wt[2]=%d wt[3]=%d tar_u[0]=%d tar_u[1]=%d tar_u[2]=%d tar_u[3]=%d cpu_tar_util=%d grp_m[0]=%d grp_m[1]=%d grp_m[2]=%d grp_m[3]=%d", REC->cpu, REC->gu0, REC->gu1, REC->gu2, REC->gu3, REC->rto0, REC->rto1, REC->rto2, REC->rto3, REC->marg0, REC->marg1, REC->marg2, REC->marg3, REC->ot, REC->pcpu_pgrp_wetin0, REC->pcpu_pgrp_wetin1, REC->pcpu_pgrp_wetin2, REC->pcpu_pgrp_wetin3, REC->pcpu_pgrp_tar_u0, REC->pcpu_pgrp_tar_u1, REC->pcpu_pgrp_tar_u2, REC->pcpu_pgrp_tar_u3, REC->cpu_tar_util, REC->grp_margin0, REC->grp_margin1, REC->grp_margin2, REC->grp_margin3

@@ -1,0 +1,16 @@
+name: sched_compute_energy
+ID: 1706
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int dst_cpu;	offset:8;	size:4;	signed:1;
+	field:int gear_id;	offset:12;	size:4;	signed:1;
+	field:long cpu_mask;	offset:16;	size:8;	signed:1;
+	field:unsigned long energy;	offset:24;	size:8;	signed:0;
+	field:unsigned long max_util;	offset:32;	size:8;	signed:0;
+	field:unsigned long sum_util;	offset:40;	size:8;	signed:0;
+
+print fmt: "dst_cpu=%d gear_id=%d mask=0x%lx energy=%lu max_util=%lu sum_util=%lu", REC->dst_cpu, REC->gear_id, REC->cpu_mask, REC->energy, REC->max_util, REC->sum_util

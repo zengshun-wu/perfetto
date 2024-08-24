@@ -1,0 +1,15 @@
+name: sched_compute_energy_cpu_dsu
+ID: 1708
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int dst_cpu;	offset:8;	size:4;	signed:1;
+	field:unsigned long cpu_pwr;	offset:16;	size:8;	signed:0;
+	field:unsigned long delta_share_pwr;	offset:24;	size:8;	signed:0;
+	field:unsigned long dsu_pwr;	offset:32;	size:8;	signed:0;
+	field:unsigned long sum_pwr;	offset:40;	size:8;	signed:0;
+
+print fmt: "dst_cpu=%d cpu_pwr=%lu delta_share_pwr=%lu dsu_pwr=%lu sum=%lu", REC->dst_cpu, REC->cpu_pwr, REC->delta_share_pwr, REC->dsu_pwr, REC->sum_pwr

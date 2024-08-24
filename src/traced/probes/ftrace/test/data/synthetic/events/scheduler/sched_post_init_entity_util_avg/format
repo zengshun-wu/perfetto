@@ -1,0 +1,18 @@
+name: sched_post_init_entity_util_avg
+ID: 1659
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int pid;	offset:8;	size:4;	signed:1;
+	field:char comm[16];	offset:12;	size:16;	signed:0;
+	field:unsigned long ori;	offset:32;	size:8;	signed:0;
+	field:unsigned long util_avg;	offset:40;	size:8;	signed:0;
+	field:unsigned long weight;	offset:48;	size:8;	signed:0;
+	field:unsigned int freq;	offset:56;	size:4;	signed:0;
+	field:unsigned long desired_cpufreq;	offset:64;	size:8;	signed:0;
+	field:int cpu;	offset:72;	size:4;	signed:1;
+
+print fmt: "pid=%d task=%s ori=%lu to suppressed=%lu lw=%lu max_freq=%u suppressed_freq=%lu cpu=%d", REC->pid, REC->comm, REC->ori, REC->util_avg, REC->weight, REC->freq, REC->desired_cpufreq, REC->cpu

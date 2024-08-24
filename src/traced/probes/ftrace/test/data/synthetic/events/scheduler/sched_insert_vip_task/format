@@ -1,0 +1,20 @@
+name: sched_insert_vip_task
+ID: 1662
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int pid;	offset:8;	size:4;	signed:1;
+	field:int cpu;	offset:12;	size:4;	signed:1;
+	field:int vip_prio;	offset:16;	size:4;	signed:1;
+	field:bool at_front;	offset:20;	size:1;	signed:0;
+	field:int prev_pid;	offset:24;	size:4;	signed:1;
+	field:int next_pid;	offset:28;	size:4;	signed:1;
+	field:bool requeue;	offset:32;	size:1;	signed:0;
+	field:bool is_first_entry;	offset:33;	size:1;	signed:0;
+	field:int prio;	offset:36;	size:4;	signed:1;
+	field:int cpuctl;	offset:40;	size:4;	signed:1;
+
+print fmt: "pid=%d cpu=%d vip_prio=%d at_front=%d prev_pid=%d next_pid=%d requeue=%d, is_first_entry=%d, prio=%d, cpuctl=%d", REC->pid, REC->cpu, REC->vip_prio, REC->at_front, REC->prev_pid, REC->next_pid, REC->requeue, REC->is_first_entry, REC->prio, REC->cpuctl

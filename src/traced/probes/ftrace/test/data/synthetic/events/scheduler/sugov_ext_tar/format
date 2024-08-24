@@ -1,0 +1,15 @@
+name: sugov_ext_tar
+ID: 1630
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:unsigned long ret_util;	offset:16;	size:8;	signed:0;
+	field:unsigned long cpu_util;	offset:24;	size:8;	signed:0;
+	field:unsigned long umax;	offset:32;	size:8;	signed:0;
+	field:int am;	offset:40;	size:4;	signed:1;
+
+print fmt: "cpu=%d ret_util=%ld cpu_util=%ld umax=%ld am=%d", REC->cpu, REC->ret_util, REC->cpu_util, REC->umax, REC->am

@@ -1,0 +1,13 @@
+name: sched_get_cpu_group_util
+ID: 1682
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:int group_id;	offset:12;	size:4;	signed:1;
+	field:int util;	offset:16;	size:4;	signed:1;
+
+print fmt: "cpu =%d gp=%d gp_util=%d", REC->cpu, REC->group_id, REC->util

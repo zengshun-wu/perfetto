@@ -1,0 +1,22 @@
+name: select_packing_cpu
+ID: 1693
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int cpu;	offset:8;	size:4;	signed:0;
+	field:unsigned long util;	offset:16;	size:8;	signed:0;
+	field:unsigned long util_with_p;	offset:24;	size:8;	signed:0;
+	field:unsigned long cpu_cap;	offset:32;	size:8;	signed:0;
+	field:unsigned long spare_cap;	offset:40;	size:8;	signed:0;
+	field:unsigned int packing_core;	offset:48;	size:4;	signed:0;
+	field:unsigned long packing_margin;	offset:56;	size:8;	signed:0;
+	field:signed int temp_qos;	offset:64;	size:4;	signed:1;
+	field:unsigned int cur_freq;	offset:68;	size:4;	signed:0;
+	field:unsigned long max_cpu_util;	offset:72;	size:8;	signed:0;
+	field:int min_freq;	offset:80;	size:4;	signed:1;
+	field:int choose_type;	offset:84;	size:4;	signed:1;
+
+print fmt: "cpu=%d util=%lu util_with_p=%lu cpu_cap=%lu, spare_cap=%lu, packing_core=%d, packing_margin=%lu, temp_qos=%d, cur_freq=%d, max_cpu_util=%lu, min_freq=%d choose_type=%d", REC->cpu, REC->util, REC->util_with_p, REC->cpu_cap, REC->spare_cap, REC->packing_core, REC->packing_margin, REC->temp_qos, REC->cur_freq, REC->max_cpu_util, REC->min_freq, REC->choose_type

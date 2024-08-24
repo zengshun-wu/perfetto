@@ -1,0 +1,15 @@
+name: sched_rollover_task_window
+ID: 1678
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:char comm[16];	offset:12;	size:16;	signed:0;
+	field:bool full_window;	offset:28;	size:1;	signed:0;
+	field:u32 prev_window;	offset:32;	size:4;	signed:0;
+	field:u32 curr_window;	offset:36;	size:4;	signed:0;
+
+print fmt: "pid=%d name=%s  full_window=%d prev_window=%u curr_window=%u", REC->pid, REC->comm, REC->full_window, REC->prev_window, REC->curr_window

@@ -1,0 +1,18 @@
+name: sched_find_best_candidates
+ID: 1698
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:bool is_vip;	offset:12;	size:1;	signed:0;
+	field:long candidates;	offset:16;	size:8;	signed:1;
+	field:int order_index;	offset:24;	size:4;	signed:1;
+	field:int end_index;	offset:28;	size:4;	signed:1;
+	field:long active_mask;	offset:32;	size:8;	signed:1;
+	field:long pause_mask;	offset:40;	size:8;	signed:1;
+	field:long allowed_cpu_mask;	offset:48;	size:8;	signed:1;
+
+print fmt: "pid=%d is_vip=%d candidates=0x%lx order_index=%d end_index=%d active_mask=0x%lx pause_mask=0x%lx allowed_mask=0x%lx", REC->pid, REC->is_vip, REC->candidates, REC->order_index, REC->end_index, REC->active_mask, REC->pause_mask, REC->allowed_cpu_mask

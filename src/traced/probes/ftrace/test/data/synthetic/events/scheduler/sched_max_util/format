@@ -1,0 +1,16 @@
+name: sched_max_util
+ID: 1705
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int gear_idx;	offset:8;	size:4;	signed:1;
+	field:int dst_cpu;	offset:12;	size:4;	signed:1;
+	field:unsigned long max_util;	offset:16;	size:8;	signed:0;
+	field:int cpu;	offset:24;	size:4;	signed:1;
+	field:unsigned long util;	offset:32;	size:8;	signed:0;
+	field:unsigned long cpu_util;	offset:40;	size:8;	signed:0;
+
+print fmt: "gear_idx=%d dst_cpu=%d max_util=%lu cpu=%d util=%lu cpu_util=%lu", REC->gear_idx, REC->dst_cpu, REC->max_util, REC->cpu, REC->util, REC->cpu_util
