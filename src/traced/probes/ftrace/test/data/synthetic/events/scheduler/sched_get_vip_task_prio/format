@@ -1,0 +1,18 @@
+name: sched_get_vip_task_prio
+ID: 1661
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int pid;	offset:8;	size:4;	signed:1;
+	field:int vip_prio;	offset:12;	size:4;	signed:1;
+	field:int prio;	offset:16;	size:4;	signed:1;
+	field:bool is_ls;	offset:20;	size:1;	signed:0;
+	field:unsigned int ls_vip_threshold;	offset:24;	size:4;	signed:0;
+	field:int cpuctl;	offset:28;	size:4;	signed:1;
+	field:unsigned int group_threshold;	offset:32;	size:4;	signed:0;
+	field:bool is_basic_vip;	offset:36;	size:1;	signed:0;
+
+print fmt: "pid=%d vip_prio=%d prio=%d is_ls=%d ls_vip_threshold=%d cpuctl=%d group_threshold=%d is_basic_vip=%d", REC->pid, REC->vip_prio, REC->prio, REC->is_ls, REC->ls_vip_threshold, REC->cpuctl, REC->group_threshold, REC->is_basic_vip

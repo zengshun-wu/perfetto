@@ -1,0 +1,16 @@
+name: sched_find_lowest_rq
+ID: 1666
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:int policy;	offset:12;	size:4;	signed:1;
+	field:int target_cpu;	offset:16;	size:4;	signed:1;
+	field:unsigned int avail_lowest_mask;	offset:20;	size:4;	signed:0;
+	field:unsigned int lowest_mask;	offset:24;	size:4;	signed:0;
+	field:unsigned int active_mask;	offset:28;	size:4;	signed:0;
+
+print fmt: "pid=%4d policy=0x%08x target=%d avail_lowest_mask=0x%x lowest_mask=0x%x, active_mask:0x%x", REC->pid, REC->policy, REC->target_cpu, REC->avail_lowest_mask, REC->lowest_mask, REC->active_mask

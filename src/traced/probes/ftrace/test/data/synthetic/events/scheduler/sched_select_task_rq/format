@@ -1,0 +1,26 @@
+name: sched_select_task_rq
+ID: 1700
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:int compat_thread;	offset:12;	size:4;	signed:1;
+	field:bool in_irq;	offset:16;	size:1;	signed:0;
+	field:int policy;	offset:20;	size:4;	signed:1;
+	field:int backup_reason;	offset:24;	size:4;	signed:1;
+	field:int prev_cpu;	offset:28;	size:4;	signed:1;
+	field:int target_cpu;	offset:32;	size:4;	signed:1;
+	field:int task_util;	offset:36;	size:4;	signed:1;
+	field:int task_util_est;	offset:40;	size:4;	signed:1;
+	field:int boost;	offset:44;	size:4;	signed:1;
+	field:long task_mask;	offset:48;	size:8;	signed:1;
+	field:long effective_softmask;	offset:56;	size:8;	signed:1;
+	field:bool prefer;	offset:64;	size:1;	signed:0;
+	field:int sync_flag;	offset:68;	size:4;	signed:1;
+	field:int cpuctl_grp_id;	offset:72;	size:4;	signed:1;
+	field:int cpuset_grp_id;	offset:76;	size:4;	signed:1;
+
+print fmt: "pid=%4d 32-bit=%d in_irq=%d policy=0x%08x backup_reason=0x%04x pre-cpu=%d target=%d util=%d util_est=%d uclamp=%d mask=0x%lx eff_softmask=0x%lx latency_sensitive=%d sync=%d cpuctl=%d cpuset=%d", REC->pid, REC->compat_thread, REC->in_irq, REC->policy, REC->backup_reason, REC->prev_cpu, REC->target_cpu, REC->task_util, REC->task_util_est, REC->boost, REC->task_mask, REC->effective_softmask, REC->prefer, REC->sync_flag, REC->cpuctl_grp_id, REC->cpuset_grp_id

@@ -1,0 +1,24 @@
+name: sugov_ext_pger_pgrp_u
+ID: 1685
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int gear_id;	offset:8;	size:4;	signed:1;
+	field:int cpu;	offset:12;	size:4;	signed:1;
+	field:int gu0;	offset:16;	size:4;	signed:1;
+	field:int gu1;	offset:20;	size:4;	signed:1;
+	field:int gu2;	offset:24;	size:4;	signed:1;
+	field:int gu3;	offset:28;	size:4;	signed:1;
+	field:int converge_thr0;	offset:32;	size:4;	signed:1;
+	field:int converge_thr1;	offset:36;	size:4;	signed:1;
+	field:int converge_thr2;	offset:40;	size:4;	signed:1;
+	field:int converge_thr3;	offset:44;	size:4;	signed:1;
+	field:int margin_for_min_opp0;	offset:48;	size:4;	signed:1;
+	field:int margin_for_min_opp1;	offset:52;	size:4;	signed:1;
+	field:int margin_for_min_opp2;	offset:56;	size:4;	signed:1;
+	field:int margin_for_min_opp3;	offset:60;	size:4;	signed:1;
+
+print fmt: "gear_id=%d cpu=%d gu[0]=%d gu[1]=%d gu[2]=%d gu[3]=%d ct[0]=%d ct[1]=%d ct[2]=%d ct[3]=%d margin_min_opp[0]=%d margin_min_opp[1]=%d margin_min_opp[2]=%d margin_min_opp[3]=%d", REC->gear_id, REC->cpu, REC->gu0, REC->gu1, REC->gu2, REC->gu3, REC->converge_thr0, REC->converge_thr1, REC->converge_thr2, REC->converge_thr3, REC->margin_for_min_opp0, REC->margin_for_min_opp1, REC->margin_for_min_opp2, REC->margin_for_min_opp3

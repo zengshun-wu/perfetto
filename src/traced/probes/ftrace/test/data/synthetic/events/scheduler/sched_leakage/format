@@ -1,0 +1,16 @@
+name: sched_leakage
+ID: 1643
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:int opp;	offset:12;	size:4;	signed:1;
+	field:unsigned int temp;	offset:16;	size:4;	signed:0;
+	field:unsigned long cpu_static_pwr;	offset:24;	size:8;	signed:0;
+	field:unsigned long static_pwr;	offset:32;	size:8;	signed:0;
+	field:unsigned long sum_cap;	offset:40;	size:8;	signed:0;
+
+print fmt: "cpu=%d opp=%d temp=%u lkg=%lu sum_lkg=%lu, sum_cap=%lu", REC->cpu, REC->opp, REC->temp, REC->cpu_static_pwr, REC->static_pwr, REC->sum_cap

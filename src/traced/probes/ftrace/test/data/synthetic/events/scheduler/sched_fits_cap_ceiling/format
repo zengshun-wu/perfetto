@@ -1,0 +1,20 @@
+name: sched_fits_cap_ceiling
+ID: 1695
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:bool fit;	offset:8;	size:1;	signed:0;
+	field:int cpu;	offset:12;	size:4;	signed:1;
+	field:unsigned long cpu_util;	offset:16;	size:8;	signed:0;
+	field:unsigned long cup_cap;	offset:24;	size:8;	signed:0;
+	field:unsigned long ceiling;	offset:32;	size:8;	signed:0;
+	field:unsigned int capacity_dn_margin;	offset:40;	size:4;	signed:0;
+	field:unsigned int capacity_up_margin;	offset:44;	size:4;	signed:0;
+	field:unsigned int sugov_margin;	offset:48;	size:4;	signed:0;
+	field:unsigned long capacity_orig;	offset:56;	size:8;	signed:0;
+	field:bool AM_enabled;	offset:64;	size:1;	signed:0;
+
+print fmt: "fit=%d cpu=%d cpu_util=%ld cup_cap=%ld ceiling=%ld capacity_dn_margin=%d capacity_up_margin=%d sugov_margin=%d capacity_orig=%ld adaptive_margin_ctrl=%d", REC->fit, REC->cpu, REC->cpu_util, REC->cup_cap, REC->ceiling, REC->capacity_dn_margin, REC->capacity_up_margin, REC->sugov_margin, REC->capacity_orig, REC->AM_enabled

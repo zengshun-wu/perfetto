@@ -1,0 +1,21 @@
+name: sched_update_task_ravg
+ID: 1674
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:char comm[16];	offset:12;	size:16;	signed:0;
+	field:enum task_event evt;	offset:28;	size:4;	signed:0;
+	field:u64 irqtime;	offset:32;	size:8;	signed:0;
+	field:int group_id;	offset:40;	size:4;	signed:1;
+	field:u64 wallclock;	offset:48;	size:8;	signed:0;
+	field:u64 mark_start;	offset:56;	size:8;	signed:0;
+	field:u64 window_start;	offset:64;	size:8;	signed:0;
+	field:int cpu;	offset:72;	size:4;	signed:1;
+	field:u64 prev_runnable_sum;	offset:80;	size:8;	signed:0;
+	field:u64 curr_runnable_sum;	offset:88;	size:8;	signed:0;
+
+print fmt: "pid=%d name =%s event=%s flt_groupid=%d irqtime=%llu wc=%llu ms=%llu ws = %llu cpu=%d prev=%llu curr=%llu", REC->pid, REC->comm, task_event_names[REC->evt], REC->group_id, REC->irqtime, REC->wallclock, REC->mark_start, REC->window_start, REC->cpu, REC->prev_runnable_sum, REC->curr_runnable_sum

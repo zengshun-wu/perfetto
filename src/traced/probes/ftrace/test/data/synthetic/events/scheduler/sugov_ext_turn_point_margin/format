@@ -1,0 +1,15 @@
+name: sugov_ext_turn_point_margin
+ID: 1632
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int gear_id;	offset:8;	size:4;	signed:0;
+	field:unsigned int orig_util;	offset:12;	size:4;	signed:0;
+	field:unsigned int margin_util;	offset:16;	size:4;	signed:0;
+	field:unsigned int turn_point;	offset:20;	size:4;	signed:0;
+	field:unsigned int target_margin;	offset:24;	size:4;	signed:0;
+
+print fmt: "gear_id=%u orig_util=%u margin_util=%u turn_point=%d target_margin=%d", REC->gear_id, REC->orig_util, REC->margin_util, REC->turn_point, REC->target_margin

@@ -1,0 +1,16 @@
+name: sched_update_cpu_busy_time
+ID: 1676
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int cpu;	offset:8;	size:4;	signed:1;
+	field:pid_t pid;	offset:12;	size:4;	signed:1;
+	field:char comm[16];	offset:16;	size:16;	signed:0;
+	field:enum cpu_update_event evt;	offset:32;	size:4;	signed:0;
+	field:u64 prev_delta;	offset:40;	size:8;	signed:0;
+	field:u64 curr_delta;	offset:48;	size:8;	signed:0;
+
+print fmt: "cpu=%d pid=%d name=%s event=%s prev_delta = %llu curr_delta = %llu", REC->cpu, REC->pid, REC->comm, cpu_event_names[REC->evt], REC->prev_delta, REC->curr_delta

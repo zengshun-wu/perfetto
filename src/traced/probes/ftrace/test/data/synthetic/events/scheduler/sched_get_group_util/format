@@ -1,0 +1,16 @@
+name: sched_get_group_util
+ID: 1681
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int type;	offset:8;	size:4;	signed:1;
+	field:int group_id;	offset:12;	size:4;	signed:1;
+	field:int window_count;	offset:16;	size:4;	signed:1;
+	field:int weight_policy;	offset:20;	size:4;	signed:1;
+	field:int res;	offset:24;	size:4;	signed:1;
+	field:int hint;	offset:28;	size:4;	signed:1;
+
+print fmt: "type=%d grp_id=%d wc=%d wp=%d res=%d hint %d", REC->type, REC->group_id, REC->window_count, REC->weight_policy, REC->res, REC->hint

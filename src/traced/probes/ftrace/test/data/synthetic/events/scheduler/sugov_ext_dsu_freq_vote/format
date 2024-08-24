@@ -1,0 +1,14 @@
+name: sugov_ext_dsu_freq_vote
+ID: 1626
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int wl_type;	offset:8;	size:4;	signed:0;
+	field:unsigned int gear_id;	offset:12;	size:4;	signed:0;
+	field:unsigned int cpu_freq;	offset:16;	size:4;	signed:0;
+	field:unsigned int dsu_freq_vote;	offset:20;	size:4;	signed:0;
+
+print fmt: "wl_type=%u gear_id=%u cpu_freq=%u dsu_freq_vote=%u", REC->wl_type, REC->gear_id, REC->cpu_freq, REC->dsu_freq_vote

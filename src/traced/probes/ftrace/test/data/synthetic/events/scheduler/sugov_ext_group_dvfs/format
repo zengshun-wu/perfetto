@@ -1,0 +1,18 @@
+name: sugov_ext_group_dvfs
+ID: 1631
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int gearid;	offset:8;	size:4;	signed:1;
+	field:unsigned long util;	offset:16;	size:8;	signed:0;
+	field:unsigned long pelt_util_with_margin;	offset:24;	size:8;	signed:0;
+	field:unsigned long flt_util;	offset:32;	size:8;	signed:0;
+	field:unsigned long pelt_util;	offset:40;	size:8;	signed:0;
+	field:unsigned long pelt_margin;	offset:48;	size:8;	signed:0;
+	field:unsigned long freq;	offset:56;	size:8;	signed:0;
+	field:unsigned long min_freq;	offset:64;	size:8;	signed:0;
+
+print fmt: "gearid=%d ret=%lu pelt_with_margin=%lu tar=%lu pelt=%lu pelt_margin=%lu freq=%lu min_freq:%lu", REC->gearid, REC->util, REC->pelt_util_with_margin, REC->flt_util, REC->pelt_util, REC->pelt_margin, REC->freq, REC->min_freq

@@ -13,6 +13,13 @@ message SchedSwitchFtraceEvent {
   optional string next_comm = 5;
   optional int32 next_pid = 6;
   optional int32 next_prio = 7;
+  optional uint32 prev_cpumask = 8;
+  optional uint32 next_cpumask = 9;
+  optional uint32 type = 10;
+  optional uint64 prev_dynamic_svp = 11;
+  optional uint64 next_dynamic_svp = 12;
+  optional uint32 prev_dyn = 13;
+  optional uint32 next_dyn = 14;
 }
 message SchedWakeupFtraceEvent {
   optional string comm = 1;
@@ -107,4 +114,112 @@ message SchedMigrateTaskFtraceEvent {
   optional int32 dest_cpu = 5;
   optional int32 running = 6;
   optional uint32 load = 7;
+}
+message SchedKthreadStopFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+}
+message SchedKthreadStopRetFtraceEvent {
+  optional int32 ret = 1;
+}
+message SchedKthreadWorkExecuteEndFtraceEvent {
+  optional uint64 work = 1;
+  optional uint64 function = 2;
+}
+message SchedKthreadWorkExecuteStartFtraceEvent {
+  optional uint64 work = 1;
+  optional uint64 function = 2;
+}
+message SchedKthreadWorkQueueWorkFtraceEvent {
+  optional uint64 work = 1;
+  optional uint64 function = 2;
+  optional uint64 worker = 3;
+}
+message SchedMoveNumaFtraceEvent {
+  optional int32 pid = 1;
+  optional int32 tgid = 2;
+  optional int32 ngid = 3;
+  optional int32 src_cpu = 4;
+  optional int32 src_nid = 5;
+  optional int32 dst_cpu = 6;
+  optional int32 dst_nid = 7;
+}
+message SchedStatBlockedFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional uint64 delay = 3;
+}
+message SchedStatIowaitFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional uint64 delay = 3;
+}
+message SchedStatRuntimeFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional uint64 runtime = 3;
+  optional uint64 vruntime = 4;
+}
+message SchedStatSleepFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional uint64 delay = 3;
+}
+message SchedStatWaitFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional uint64 delay = 3;
+}
+message SchedStickNumaFtraceEvent {
+  optional int32 src_pid = 1;
+  optional int32 src_tgid = 2;
+  optional int32 src_ngid = 3;
+  optional int32 src_cpu = 4;
+  optional int32 src_nid = 5;
+  optional int32 dst_pid = 6;
+  optional int32 dst_tgid = 7;
+  optional int32 dst_ngid = 8;
+  optional int32 dst_cpu = 9;
+  optional int32 dst_nid = 10;
+  optional int32 pid = 11;
+  optional int32 tgid = 12;
+  optional int32 ngid = 13;
+}
+message SchedSvpQueueOpFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional int32 prio = 3;
+  optional string msg = 4;
+  optional int32 target_cpu = 5;
+  optional uint64 dynamic_svp = 6;
+  optional int32 svp_depth = 7;
+}
+message SchedSvpSchedFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional int32 prio = 3;
+  optional string msg = 4;
+  optional int32 target_cpu = 5;
+  optional uint64 dynamic_svp = 6;
+  optional int32 svp_depth = 7;
+}
+message SchedSwapNumaFtraceEvent {
+  optional int32 src_pid = 1;
+  optional int32 src_tgid = 2;
+  optional int32 src_ngid = 3;
+  optional int32 src_cpu = 4;
+  optional int32 src_nid = 5;
+  optional int32 dst_pid = 6;
+  optional int32 dst_tgid = 7;
+  optional int32 dst_ngid = 8;
+  optional int32 dst_cpu = 9;
+  optional int32 dst_nid = 10;
+}
+message SchedWaitTaskFtraceEvent {
+  optional string comm = 1;
+  optional int32 pid = 2;
+  optional int32 prio = 3;
+}
+message SchedWakeIdleWithoutIpiFtraceEvent {
+  optional int32 cpu = 1;
 }

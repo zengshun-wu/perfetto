@@ -1,0 +1,14 @@
+name: sched_energy_init
+ID: 1702
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:long cpu_mask;	offset:8;	size:8;	signed:1;
+	field:unsigned int gear_idx;	offset:16;	size:4;	signed:0;
+	field:unsigned long cpu_cap;	offset:24;	size:8;	signed:0;
+	field:unsigned long pds_cap;	offset:32;	size:8;	signed:0;
+
+print fmt: "mask=0x%lx gear_idx=%d cpu_cap=%lu pds_cap=%lu", REC->cpu_mask, REC->gear_idx, REC->cpu_cap, REC->pds_cap

@@ -1,0 +1,22 @@
+name: dsu_pwr_cal
+ID: 1711
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int dst_cpu;	offset:8;	size:4;	signed:1;
+	field:unsigned long task_util;	offset:16;	size:8;	signed:0;
+	field:unsigned long total_util;	offset:24;	size:8;	signed:0;
+	field:unsigned int dsu_bw;	offset:32;	size:4;	signed:0;
+	field:unsigned int emi_bw;	offset:36;	size:4;	signed:0;
+	field:int temp;	offset:40;	size:4;	signed:1;
+	field:unsigned int dsu_freq;	offset:44;	size:4;	signed:0;
+	field:unsigned int dsu_volt;	offset:48;	size:4;	signed:0;
+	field:unsigned int dsu_dyn_pwr;	offset:52;	size:4;	signed:0;
+	field:unsigned int dsu_lkg_pwr;	offset:56;	size:4;	signed:0;
+	field:unsigned int mcusys_dyn_pwr;	offset:60;	size:4;	signed:0;
+	field:unsigned int dsu_tal_pwr;	offset:64;	size:4;	signed:0;
+
+print fmt: "dst_cpu=%d task_util=%lu total_util=%lu dsu_bw=%u emi_bw=%u temp=%d dsu_freq=%u dsu_volt=%u dsu_dyn_pwr=%u dsu_lkg_pwr=%u mcusys_dyn_pwr=%u dsu_tal_pwr=%u", REC->dst_cpu, REC->task_util, REC->total_util, REC->dsu_bw, REC->emi_bw, REC->temp, REC->dsu_freq, REC->dsu_volt, REC->dsu_dyn_pwr, REC->dsu_lkg_pwr, REC->mcusys_dyn_pwr, REC->dsu_tal_pwr

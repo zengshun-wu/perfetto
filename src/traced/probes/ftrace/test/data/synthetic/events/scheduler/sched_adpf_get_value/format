@@ -1,0 +1,17 @@
+name: sched_adpf_get_value
+ID: 1691
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int cmd;	offset:8;	size:4;	signed:0;
+	field:unsigned int sid;	offset:12;	size:4;	signed:0;
+	field:unsigned int tgid;	offset:16;	size:4;	signed:0;
+	field:unsigned int uid;	offset:20;	size:4;	signed:0;
+	field:int threadIds_size;	offset:24;	size:4;	signed:1;
+	field:long targetDurationNanos;	offset:32;	size:8;	signed:1;
+
+print fmt: "cmd = %d sid = %d tgid = %d uid = %d threadIds_size = %d targetDurationNanos = %ld
+", REC->cmd, REC->sid, REC->tgid, REC->uid, REC->threadIds_size, REC->targetDurationNanos

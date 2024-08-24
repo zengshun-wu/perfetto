@@ -1,0 +1,14 @@
+name: sugov_ext_pgrp_hint
+ID: 1686
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:int ht0;	offset:8;	size:4;	signed:1;
+	field:int ht1;	offset:12;	size:4;	signed:1;
+	field:int ht2;	offset:16;	size:4;	signed:1;
+	field:int ht3;	offset:20;	size:4;	signed:1;
+
+print fmt: "gpht[0]=%d gpht[1]=%d gpht[2]=%d gpht[3]=%d", REC->ht0, REC->ht1, REC->ht2, REC->ht3

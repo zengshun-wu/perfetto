@@ -1,0 +1,25 @@
+name: sched_cpu_util
+ID: 1653
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int cpu;	offset:8;	size:4;	signed:0;
+	field:unsigned int nr_running;	offset:12;	size:4;	signed:0;
+	field:long cpu_util;	offset:16;	size:8;	signed:1;
+	field:long cpu_max_util;	offset:24;	size:8;	signed:1;
+	field:unsigned int capacity;	offset:32;	size:4;	signed:0;
+	field:unsigned int capacity_orig;	offset:36;	size:4;	signed:0;
+	field:unsigned int idle_exit_latency;	offset:40;	size:4;	signed:0;
+	field:int online;	offset:44;	size:4;	signed:1;
+	field:int paused;	offset:48;	size:4;	signed:1;
+	field:unsigned int nr_rtg_high_prio_tasks;	offset:52;	size:4;	signed:0;
+	field:int high_irq_ctrl;	offset:56;	size:4;	signed:1;
+	field:int high_irq_load;	offset:60;	size:4;	signed:1;
+	field:long irqload;	offset:64;	size:8;	signed:1;
+	field:unsigned int min_highirq_load;	offset:72;	size:4;	signed:0;
+	field:unsigned int irq_ratio;	offset:76;	size:4;	signed:0;
+
+print fmt: "cpu=%d nr_running=%d cpu_util=%ld cpu_max_util=%ld capacity=%u capacity_orig=%u idle_exit_latency=%u online=%u paused=%u nr_rtg_hp=%u high_irq_ctrl=%d high_irq_load=%u irqload=%ld min_highirq_load=%u irq_ratio=%u", REC->cpu, REC->nr_running, REC->cpu_util, REC->cpu_max_util, REC->capacity, REC->capacity_orig, REC->idle_exit_latency, REC->online, REC->paused, REC->nr_rtg_high_prio_tasks, REC->high_irq_ctrl, REC->high_irq_load, REC->irqload, REC->min_highirq_load, REC->irq_ratio

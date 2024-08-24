@@ -1,0 +1,22 @@
+name: sched_find_cpu_in_irq
+ID: 1694
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:pid_t pid;	offset:8;	size:4;	signed:1;
+	field:int policy;	offset:12;	size:4;	signed:1;
+	field:int target_cpu;	offset:16;	size:4;	signed:1;
+	field:int prev_cpu;	offset:20;	size:4;	signed:1;
+	field:unsigned int fit_cpus;	offset:24;	size:4;	signed:0;
+	field:unsigned int idle_cpus;	offset:28;	size:4;	signed:0;
+	field:int best_idle_cpu;	offset:32;	size:4;	signed:1;
+	field:unsigned long best_idle_pwr;	offset:40;	size:8;	signed:0;
+	field:unsigned int min_exit_lat;	offset:48;	size:4;	signed:0;
+	field:int max_spare_cpu;	offset:52;	size:4;	signed:1;
+	field:unsigned long best_pwr;	offset:56;	size:8;	signed:0;
+	field:long max_spare_cap;	offset:64;	size:8;	signed:1;
+
+print fmt: "pid=%4d policy=0x%08x target_cpu=%d task_cpu=%d fit_cpus=0x%x idle_cpus=0x%x best_idle_cpu=%d best_idle_pwr=%lu min_exit_lat=%u max_spare_cpu=%d best_pwr=%lu max_spare_cap=%ld", REC->pid, REC->policy, REC->target_cpu, REC->prev_cpu, REC->fit_cpus, REC->idle_cpus, REC->best_idle_cpu, REC->best_idle_pwr, REC->min_exit_lat, REC->max_spare_cpu, REC->best_pwr, REC->max_spare_cap

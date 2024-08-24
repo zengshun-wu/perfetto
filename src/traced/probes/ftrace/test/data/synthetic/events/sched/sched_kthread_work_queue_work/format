@@ -1,0 +1,13 @@
+name: sched_kthread_work_queue_work
+ID: 88
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:void * work;	offset:8;	size:8;	signed:0;
+	field:void * function;	offset:16;	size:8;	signed:0;
+	field:void * worker;	offset:24;	size:8;	signed:0;
+
+print fmt: "work struct=%p function=%ps worker=%p", REC->work, REC->function, REC->worker

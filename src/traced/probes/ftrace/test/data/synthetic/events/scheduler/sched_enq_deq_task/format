@@ -1,0 +1,25 @@
+name: sched_enq_deq_task
+ID: 1679
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:char comm[16];	offset:8;	size:16;	signed:0;
+	field:pid_t pid;	offset:24;	size:4;	signed:1;
+	field:int prio;	offset:28;	size:4;	signed:1;
+	field:int cpu;	offset:32;	size:4;	signed:1;
+	field:int gp0_cnt;	offset:36;	size:4;	signed:1;
+	field:int gp1_cnt;	offset:40;	size:4;	signed:1;
+	field:int gp2_cnt;	offset:44;	size:4;	signed:1;
+	field:int gp3_cnt;	offset:48;	size:4;	signed:1;
+	field:bool enqueue;	offset:52;	size:1;	signed:0;
+	field:unsigned int nr_running;	offset:56;	size:4;	signed:0;
+	field:unsigned int rt_nr_running;	offset:60;	size:4;	signed:0;
+	field:unsigned int cpus_allowed;	offset:64;	size:4;	signed:0;
+	field:u64 flt_cpu_util;	offset:72;	size:8;	signed:0;
+	field:unsigned long cfs_util;	offset:80;	size:8;	signed:0;
+	field:unsigned long rt_util;	offset:88;	size:8;	signed:0;
+
+print fmt: "cpu=%d name=%s comm=%s pid=%d prio=%d nr_running=%u rt_nr_running=%u affine=%x cfs_util=%lu rt_util=%lu gp0=[%d] gp1=[%d] gp2=[%d] gp3=[%d]", REC->cpu, REC->enqueue ? "enqueue" : "dequeue", REC->comm, REC->pid, REC->prio, REC->nr_running, REC->rt_nr_running, REC->cpus_allowed, REC->cfs_util, REC->rt_util, REC->gp0_cnt, REC->gp1_cnt, REC->gp2_cnt, REC->gp3_cnt

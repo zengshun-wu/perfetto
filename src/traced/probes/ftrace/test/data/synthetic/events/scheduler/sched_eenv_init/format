@@ -1,0 +1,14 @@
+name: sched_eenv_init
+ID: 1703
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int dsu_freq_base;	offset:8;	size:4;	signed:0;
+	field:unsigned int dsu_volt_base;	offset:12;	size:4;	signed:0;
+	field:unsigned int dsu_freq_thermal;	offset:16;	size:4;	signed:0;
+	field:unsigned int gear_idx;	offset:20;	size:4;	signed:0;
+
+print fmt: "dsu_freq_base=%u dsu_volt_base=%u dsu_freq_thermal=%u share_buck_idx=%u", REC->dsu_freq_base, REC->dsu_volt_base, REC->dsu_freq_thermal, REC->gear_idx

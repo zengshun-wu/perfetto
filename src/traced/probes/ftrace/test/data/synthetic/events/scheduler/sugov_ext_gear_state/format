@@ -1,0 +1,17 @@
+name: sugov_ext_gear_state
+ID: 1627
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:unsigned int gear_id;	offset:8;	size:4;	signed:0;
+	field:unsigned long target_freq;	offset:16;	size:8;	signed:0;
+	field:unsigned long util_type;	offset:24;	size:8;	signed:0;
+	field:unsigned long freq;	offset:32;	size:8;	signed:0;
+	field:unsigned long min;	offset:40;	size:8;	signed:0;
+	field:unsigned long max;	offset:48;	size:8;	signed:0;
+	field:unsigned int dvfs_tracking_enable;	offset:56;	size:4;	signed:0;
+
+print fmt: "gear_id=%u target_freq=%lu, util_type=%lu, freq=%lu min=%lu, max=%lu, dvfs_tracking_enable=%d", REC->gear_id, REC->target_freq, REC->util_type, REC->freq, REC->min, REC->max, REC->dvfs_tracking_enable

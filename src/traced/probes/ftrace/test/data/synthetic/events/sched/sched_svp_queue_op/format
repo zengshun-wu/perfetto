@@ -1,0 +1,17 @@
+name: sched_svp_queue_op
+ID: 94
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
+
+	field:char comm[16];	offset:8;	size:16;	signed:0;
+	field:pid_t pid;	offset:24;	size:4;	signed:1;
+	field:int prio;	offset:28;	size:4;	signed:1;
+	field:char msg[64];	offset:32;	size:64;	signed:0;
+	field:int target_cpu;	offset:96;	size:4;	signed:1;
+	field:u64 dynamic_svp;	offset:104;	size:8;	signed:0;
+	field:int svp_depth;	offset:112;	size:4;	signed:1;
+
+print fmt: "comm=%s pid=%d prio=%d msg=%s target_cpu=%03d dynamic_svp:%llx svp_depth:%d", REC->comm, REC->pid, REC->prio, REC->msg, REC->target_cpu, REC->dynamic_svp, REC->svp_depth
